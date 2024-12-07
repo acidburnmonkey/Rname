@@ -4,12 +4,22 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+
 public class Main {
 
     // HELP Switch
     public static void help(){
-        String str = "usage this is the help page";
-        System.out.println(str);
+        String documentation = """
+            Jname , rename files in place.
+            
+            Usage:
+            jname /path/to/file newName
+            
+            Options:
+              -h      Display this help message.
+              -v      Display verbose.
+            """;
+        System.out.println(documentation);
     }
 
 
@@ -30,7 +40,9 @@ public class Main {
 
     // Does the renaming
     public static void renamingOperation(String[] args){
-        boolean ok;
+
+        Scanner kb = new Scanner(System.in);
+        char input;
 
         // ORIGINAL FILE
         String file1 = args[0].trim();
@@ -46,13 +58,22 @@ public class Main {
 
         //rename operation
         if (OriginalFile.exists() & OriginalFile.isFile()) {
-            // Check if already exist
-            if (OriginalFile.getPath().equals(newName.getPath())){
-                System.out.println("files are same");
+            if (newName.exists()){
+                System.out.print("File already exist , overwrite? y/n  ");
+                input = kb.next().charAt(0);
+                if (input != 'y'){
+                    return;
+                }
             }
-            System.out.println(" File exist");
-            OriginalFile.renameTo(newName);
 
+            OriginalFile.renameTo(newName);
+            if (globals.verbose){
+                System.out.println(OriginalFile.getPath() +" -> "+ newName.getPath());
+            }
+
+        }
+        else if (!OriginalFile.exists()) {
+            System.out.println("File does not exist");
         }
 
         //checks for directory !NOT IMPLEMENTED 🤡
@@ -68,31 +89,31 @@ public class Main {
         }*/
     }
 
+
  // MAIN
     public static void main(String[] args) {
 
-        String[] aggs = {"here/second/old/new", "new", "third"};
-//        String[] aggs = {};
+        String[] aggs = new String[2];
 
-        if (aggs.length == 0 | aggs.length > 3) {
+        if (args.length == 0 | args.length > 3) {
             help();
             return;
         }
 
         //Checks for -v , false by default
-        boolean verbose = switches(aggs[0]);
+        globals.verbose = switches(args[0]);
 
        try {
-           if (!verbose) {
-               System.out.println(aggs[0]);
-
-               renamingOperation(aggs);
+           if (!globals.verbose) {
+               renamingOperation(args);
 
            }//end if
            else {
                //copy args and pass it 1:2
+               aggs[0]= args[1] ;
+               aggs[1]= args[2] ;
+               renamingOperation(aggs);
 
-               System.out.println(aggs[1] + " -> " );
            }
 
        }
