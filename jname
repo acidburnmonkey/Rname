@@ -1,5 +1,5 @@
 #!/bin/bash
-java -jar ./out/artifacts/jname_jar/jname.jar "$@"
+java -jar ./out/artifacts/jname_jar2/jname.jar "$@"
 
 #This is s Wrapper
 
