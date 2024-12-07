@@ -18,6 +18,8 @@ public class Main {
             Options:
               -h      Display this help message.
               -v      Display verbose.
+            
+            Note it will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.
             """;
         System.out.println(documentation);
     }
@@ -56,7 +58,7 @@ public class Main {
         File newName = new File(user.toString());
 
 
-        //rename operation
+        // FILE rename operation
         if (OriginalFile.exists() & OriginalFile.isFile()) {
             if (newName.exists()){
                 System.out.print("File already exist , overwrite? y/n  ");
@@ -76,17 +78,21 @@ public class Main {
             System.out.println("File does not exist");
         }
 
-        //checks for directory !NOT IMPLEMENTED 🤡
-        /*else if (OriginalFile.exists() & OriginalFile.isDirectory()) {
-            System.out.println(" Directory exist");
+        // DIRECTORY rename
+        else if (OriginalFile.exists() & globals.isEmptyDirectory(newName)){
+            OriginalFile.renameTo(newName);
 
-            // RENAME To
-            var user = path.resolve("old");
-            File file2 = new File(user.toString());
-            OriginalFile.renameTo(file2);
-        } else {
-            System.out.println("File not Found");
-        }*/
+            if (globals.verbose){
+                System.out.println(OriginalFile.getPath() +" -> "+ newName.getPath());
+            }
+
+        }
+        else if (OriginalFile.exists() & !globals.isEmptyDirectory(newName)) {
+            System.out.println("Directory already exist and is not empty");
+        }
+        else if (!OriginalFile.exists()) {
+        System.out.println("File not Found");
+        }
     }
 
 
@@ -115,11 +121,13 @@ public class Main {
                renamingOperation(aggs);
 
            }
-
+       }
+       catch (IndexOutOfBoundsException e){
+           System.out.println("Bad args passed");
+           help();
        }
        catch (Exception e){
            System.out.println("Something crashed :" + e.getMessage());
        }
-
     }
 }
