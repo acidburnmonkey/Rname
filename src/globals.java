@@ -10,10 +10,8 @@ public class globals {
     static boolean verbose = false;
 
     public static boolean isEmptyDirectory(File directory) {
-        // check if given path is a directory
         if (directory.isDirectory()) {
             // create a stream and check for files
-
             try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream( directory.toPath())) {
                 // return false if there is a file
                 return !directoryStream.iterator()

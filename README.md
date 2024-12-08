@@ -1,16 +1,16 @@
-# Jname 
+# Rname 
 Simple file rename utility written in Java. <br>
-Rather than using the move command and having to re type the path twice Jname renames the file or directory at its current path.
+Rather than using the move command and having to re type the path twice. Rname renames the file or directory at its current path.
 
 ## Usage
 
 ```
-Jname /path/to/file newName
+rname /path/to/file newName
 ```
 
 For verbose confirmation
 ```
-Jname -v /path/to/file newName
+rname -v /path/to/file newName
 ```
 ## Note 
 It will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.

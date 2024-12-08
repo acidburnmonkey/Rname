@@ -10,10 +10,10 @@ public class Main {
     // HELP Switch
     public static void help(){
         String documentation = """
-            Jname , rename files in place.
+            Rname , rename files in place.
             
             Usage:
-            jname /path/to/file newName
+            rname /path/to/file newName
             
             Options:
               -h      Display this help message.
