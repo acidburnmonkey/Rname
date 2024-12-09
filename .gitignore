@@ -1,0 +1,9 @@
+### IntelliJ IDEA ###
+
+!**/src/main/**/out/
+!**/src/test/**/out/
+out/production/
+japp
+here
+.idea
+jname.iml

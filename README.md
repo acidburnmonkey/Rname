@@ -6,12 +6,34 @@ Rather than using the move command and having to re type the path twice. Rname r
 
 ```
 rname /path/to/file newName
+
+rname ./thisfile newName
 ```
 
 For verbose confirmation
 ```
 rname -v /path/to/file newName
 ```
+
+# Installation
+### Fedora
+```
+sudo dnf copr enable acidburnmonkey/rname 
+sudo dnf install rname
+```
+
+### Manual
+Just copy the wrapper  into /bin/ and place the rname.jar into /usr/share/rname/
+```
+sudo cp rname /bin/
+sudo mkdir /usr/share/rname/
+sudo cp out/artifacts/rname_jar/rname.jar /usr/share/rname/
+sudo chmod +x /bin/rname
+sudo chmod +x /usr/share/rname/rname.jar
+```
+
+
+
 ## Note 
 It will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.
 
