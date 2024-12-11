@@ -23,13 +23,9 @@ sudo dnf install rname
 ```
 
 ### Manual
-Just copy the wrapper  into /bin/ and place the rname.jar into /usr/share/rname/
+Run the installer as sudo 
 ```
-sudo cp rname /bin/
-sudo mkdir /usr/share/rname/
-sudo cp out/artifacts/rname_jar/rname.jar /usr/share/rname/
-sudo chmod +x /bin/rname
-sudo chmod +x /usr/share/rname/rname.jar
+sudo ./install.sh
 ```
 
 
