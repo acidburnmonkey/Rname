@@ -14,6 +14,8 @@ For verbose confirmation
 ```
 rname -v /path/to/file newName
 ```
+## Note 
+It will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.
 
 # Installation
 ### Fedora
@@ -22,7 +24,7 @@ sudo dnf copr enable acidburnmonkey/rname
 sudo dnf install rname
 ```
 
-### Manual
+## Manual
 Run the installer as sudo 
 ```
 sudo ./install.sh
@@ -30,8 +32,11 @@ sudo ./install.sh
 ### Dependencies 
 - openjdk-21-jre or latter 
 
-## Note 
-It will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.
+## Build from source
+```
+mvn clean package 
+```
+
 
 
 ## Dono Links
