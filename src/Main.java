@@ -50,13 +50,20 @@ public class Main {
         String file1 = args[0].trim();
         File OriginalFile = new File(file1);
         // Builds the parent path
-        Path path = Paths.get(file1);
-        path = path.getParent();
+        Path file = Paths.get(file1);
+        Path path;
+
+        // resolves cwd ./
+        if (file.getParent() == null){
+           path = Paths.get(".");
+        }
+        else {
+            path = file.getParent();
+        }
 
         // RENAME To
         var user = path.resolve(args[1].trim());
         File newName = new File(user.toString());
-
 
         // FILE rename operation
         if (OriginalFile.exists() & OriginalFile.isFile()) {
@@ -100,6 +107,7 @@ public class Main {
     public static void main(String[] args) {
 
         String[] aggs = new String[2];
+
 
         if (args.length == 0 | args.length > 3) {
             help();
