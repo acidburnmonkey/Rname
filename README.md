@@ -8,7 +8,7 @@ Rather than using the move command and having to re type the path twice. Rname r
 ```
 rname /path/to/file newName
 
-rname ./thisfile newName
+rname thisfile newName
 ```
 
 For verbose confirmation
