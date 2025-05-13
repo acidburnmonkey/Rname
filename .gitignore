@@ -7,3 +7,7 @@ japp
 here
 .idea
 jname.iml
+
+#aur
+!.SRCINFO
+!PKGBUILD

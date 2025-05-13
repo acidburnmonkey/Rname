@@ -1,9 +1,0 @@
-Package: rname
-Version: 1.0-1
-Section: utils
-Priority: optional
-Architecture: amd64
-Depends: openjdk-21-jre
-Maintainer: Acid <acidburnmonkey@gmail.com>
-Homepage: https://github.com/acidburnmonkey/Rname
-Description: rname is a simple file rename utility written in Java. Rather than using the move command and having to re type the path twice. Rname renames the file or directory at its current path.
