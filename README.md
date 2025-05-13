@@ -38,6 +38,12 @@ Run the installer as sudo
 sudo ./install.sh
 ```
 
+## Arch
+
+```
+yay -S rname
+```
+
 ### Dependencies
 
 - openjdk-21-jre or latter
