@@ -1,7 +1,8 @@
 # Rname
 
-Simple file rename utility written in Java. <br>
+Simple file rename utility written in Go. <br>
 Rather than using the move command and having to re type the path twice. Rname renames the file or directory at its current path.
+There is a Java implementation on other branch
 
 ## Usage
 
@@ -19,7 +20,7 @@ rname -v /path/to/file newName
 
 ## Note
 
-It will ask to overwrite if the file already exist, but It wont overwrite a directory that is not empty.
+It will ask to overwrite if the file already exist, but It won't overwrite a directory that is not empty.
 
 # Installation
 
@@ -35,23 +36,21 @@ sudo dnf install rname
 Run the installer as sudo
 
 ```
-sudo ./install.sh
+
 ```
 
 ## Arch
 
 ```
-yay -S rname
+
 ```
 
 ### Dependencies
 
-- openjdk-21-jre or latter
-
 ## Build from source
 
 ```
-mvn clean package
+
 ```
 
 ## Dono Links
