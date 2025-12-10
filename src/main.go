@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 var verboseF *bool
@@ -37,14 +39,20 @@ func main() {
 	oldPath := filepath.Join(workDir, oldName)
 	newPath := filepath.Join(workDir, newName)
 
-	fmt.Println("workDir: ", workDir)
+	// Safe checks
+	if _, err := os.Stat(oldPath); os.IsNotExist(err) {
+		fmt.Println("That file does not exist")
+		os.Exit(1)
+	}
 
+	//rename
 	doRename(&oldPath, &newPath)
 
 }
 
 func doRename(oldPath *string, newPath *string) {
 
+	//renaming operation
 	err := os.Rename(*oldPath, *newPath)
 	if err != nil {
 		fmt.Println("error renaming ", err.Error())
@@ -54,6 +62,17 @@ func doRename(oldPath *string, newPath *string) {
 	if *verboseF {
 		fmt.Printf(" %s -> %s\n", *oldPath, *newPath)
 	}
+}
+
+func askOverwrite() bool {
+
+	fmt.Print("File already exist , overwrite? y/n :")
+
+	reader := bufio.NewReader(os.Stdin)
+	response, _ := reader.ReadString('\n')
+	response = strings.TrimSpace(strings.ToLower(response))
+
+	return response == "y" || response == "yes"
 }
 
 func help() string {
