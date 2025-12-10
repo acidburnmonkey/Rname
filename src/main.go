@@ -21,37 +21,38 @@ func main() {
 		os.Exit(0)
 	}
 
-	// args := flag.Args()
+	args := flag.Args()
 
-	// if len(args) < 2 {
-	// 	fmt.Println(help())
-	// 	os.Exit(1)
-	// }
+	if len(args) < 2 {
+		fmt.Println(help())
+		os.Exit(1)
+	}
 
-	workDir, _ := filepath.Abs(filepath.Dir("../testing/"))
+	workDir, _ := filepath.Abs(filepath.Dir(args[0]))
 
-	var oldName string = "one"
-	var newName string = "newName"
+	inputFile := filepath.Base(args[0])
+	var oldName string = inputFile
+	var newName string = args[1]
 
 	oldPath := filepath.Join(workDir, oldName)
 	newPath := filepath.Join(workDir, newName)
 
 	fmt.Println("workDir: ", workDir)
 
-	doRename(oldPath, newPath)
+	doRename(&oldPath, &newPath)
 
 }
 
-func doRename(oldPath string, newPath string) {
+func doRename(oldPath *string, newPath *string) {
 
-	err := os.Rename(oldPath, newPath)
+	err := os.Rename(*oldPath, *newPath)
 	if err != nil {
 		fmt.Println("error renaming ", err.Error())
 		os.Exit(1)
 	}
 
 	if *verboseF {
-		fmt.Printf(" %s -> %s", oldPath, newPath)
+		fmt.Printf(" %s -> %s\n", *oldPath, *newPath)
 	}
 }
 
