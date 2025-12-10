@@ -39,17 +39,12 @@ Run the installer as sudo
 
 ```
 
-## Arch
-
-```
-
-```
-
 ### Dependencies
 
 ## Build from source
 
 ```
+go build main.go
 
 ```
 
