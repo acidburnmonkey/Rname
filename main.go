@@ -39,10 +39,33 @@ func main() {
 	oldPath := filepath.Join(workDir, oldName)
 	newPath := filepath.Join(workDir, newName)
 
-	// Safe checks
+	// safe checks
+	//origin not exist
 	if _, err := os.Stat(oldPath); os.IsNotExist(err) {
 		fmt.Println("That file does not exist")
 		os.Exit(1)
+	}
+
+	destinfo, err := os.Stat(newPath)
+
+	// dest exist override?
+	if err == nil {
+
+		//not overwritig dir with contents
+		if destinfo.IsDir() {
+			if i, _ := os.ReadDir(newPath); len(i) > 0 {
+				fmt.Println("Directory already exist and is not empty")
+				os.Exit(0)
+			}
+
+		}
+
+		override := askOverwrite()
+
+		if !override {
+			os.Exit(0)
+		}
+
 	}
 
 	//rename
@@ -76,9 +99,7 @@ func askOverwrite() bool {
 }
 
 func help() string {
-
-	documentation := `
-Rname , rename files in place.
+	documentation := ` Rname , rename files in place.
 
 Usage:
 rname /path/to/file newName
