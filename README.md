@@ -44,9 +44,12 @@ Run the installer as sudo
 ## Build from source
 
 ```
-go build main.go
+go build -o rname main.go
 
 ```
+
+Then move the binary to path
+<br>
 
 ## Dono Links
 

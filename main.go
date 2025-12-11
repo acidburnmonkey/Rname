@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+const version string = "2.0"
+
 var verboseF *bool
 
 func main() {
