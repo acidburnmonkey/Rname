@@ -5,7 +5,7 @@ Summary:        A bulk file renaming utility
 
 License:        GPLv3
 URL:            https://github.com/acidburnmonkey/Rname
-Source0:        rname-%{version}-sources.tar.gz
+Source0:        rname-%{version}.tar.gz
 
 BuildRequires:  golang >= 1.19
 
@@ -15,7 +15,7 @@ move command and having to re type the path twice. Rname renames the file
 or directory at its current path.
 
 %prep
-%setup -q -n rname-%{version}
+%setup -q -c -n rname-%{version}
 
 %build
 go build -o rname main.go
@@ -28,7 +28,7 @@ install -Dm755 rname %{buildroot}%{_bindir}/rname
 %license LICENSE
 
 %changelog
-* Thu Dec 11 2024 acidburnmonkey <acidburnmonkey@proton.me> - 1.0.7-1
+* Wed Dec 11 2024 acidburnmonkey <acidburnmonkey@proton.me> - 1.0.7-1
 - Rewritten in Go
 - Initial Go-based release
 
