@@ -33,10 +33,9 @@ sudo dnf install rname
 
 ## Manual ; for Ubuntu and Debian
 
-Run the installer as sudo
-
 ```
-
+sudo curl -L "https://github.com/acidburnmonkey/Rname/releases/download/v2.0/rname" -o /usr/bin/rname
+sudo chmod +x /usr/bin/rname
 ```
 
 ### Dependencies
@@ -45,10 +44,11 @@ Run the installer as sudo
 
 ```
 go build -o rname main.go
-
 ```
 
 Then move the binary to path
+
+<br>
 <br>
 
 ## Dono Links
