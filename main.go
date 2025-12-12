@@ -9,13 +9,13 @@ import (
 	"strings"
 )
 
-const version string = "2.0"
+const version string = "2.1"
 
 var verboseF *bool
 
 func main() {
 
-	verboseF = flag.Bool("v", true, "verbose output")
+	verboseF = flag.Bool("v", false, "verbose output")
 	helpFlag := flag.Bool("h", false, "Prints help message")
 
 	flag.Parse()
@@ -101,7 +101,7 @@ func askOverwrite() bool {
 }
 
 func help() string {
-	documentation := ` Rname , rename files in place.
+	const documentation string = ` Rname , rename files in place.
 
 Usage:
 rname /path/to/file newName
@@ -110,7 +110,7 @@ Options:
   -h      Display this help message.
   -v      Display verbose.
 
-Note it will ask to overwrite if the file already exist, but It won't overwrite a directory that is not empty.
-        `
-	return documentation
+Note it will ask to overwrite if the file already exist, but It won't overwrite a directory that is not empty. `
+
+	return fmt.Sprintf("%s \nVersion: %s", documentation, version)
 }
