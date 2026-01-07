@@ -1,5 +1,5 @@
 Name:           rname
-Version:        2.0
+Version:        2.1
 Release:        1%{?dist}
 Summary:        A bulk file renaming utility
 
@@ -28,7 +28,5 @@ install -Dm755 rname %{buildroot}%{_bindir}/rname
 %license LICENSE
 
 %changelog
-* Wed Dec 11 2024 acidburnmonkey <acidburnmonkey@proton.me> - 1.0.7-1
-- Rewritten in Go
-- Initial Go based release
-
+* Wed Dec 11 2024 acidburnmonkey <acidburnmonkey@proton.me> - 2.1.7-1
+- minor addition to help()
