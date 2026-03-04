@@ -27,7 +27,7 @@ It will ask to overwrite if the file already exist, but It won't overwrite a dir
 ### Fedora
 
 ```
-sudo dnf copr enable acidburnmonkey/rname
+sudo dnf copr enable acidburnmonkey/invigilatus
 sudo dnf install rname
 ```
 
