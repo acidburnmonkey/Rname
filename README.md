@@ -34,7 +34,7 @@ sudo dnf install rname
 ## Manual ; for Ubuntu and Debian
 
 ```
-sudo curl -L "https://github.com/acidburnmonkey/Rname/releases/download/v2.0/rname" -o /usr/bin/rname
+sudo curl -L "https://github.com/acidburnmonkey/Rname/releases/latest/download/rname" -o /usr/bin/rname
 sudo chmod +x /usr/bin/rname
 ```
 
